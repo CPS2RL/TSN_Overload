@@ -8,3 +8,34 @@ We develop an ILP-based scheduling formulation that separates packets into manda
 
 
 
+
+#### Installation
+
+#### Prerequisites
+- Python 3.7 or higher
+- pip package manager
+- Gurobi Optimizer (requires license)
+
+ Install required packages
+   ```bash
+   pip install -r requirements.txt
+   ```
+-Get Lincense for Gurobi Optimizer from (https://www.gurobi.com/)
+
+#### Usage
+
+1. Prepare your input CSV file
+   - Place your input CSV file in the `input_csvs/` directory
+2. Input csv format
+   | Flow | Period | Deadline | Execution  | w | h | Queue |
+   |------|--------|----------|------------|---|---|-------|
+   | F1   | 400000 | 400000   | 6000       | 1 | 2 | 6     |
+   | F2   | 500000 | 500000   | 8000       | 1 | 1 | 5     |
+   | ...  | ...    | ...      | ...        | ..| ..| ...   |
+   
+   
+
+
+
+
+
