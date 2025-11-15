@@ -2,15 +2,6 @@ import gurobipy as gp
 from gurobipy import GRB
 
 def create_flow_dictionaries(df):
-    """
-    Convert DataFrame rows into a list of flow dictionaries.
-    
-    Args:
-        df (pd.DataFrame): DataFrame containing flow data.
-    
-    Returns:
-        list: List of dictionaries with flow attributes.
-    """
     flows = []
     for _, row in df.iterrows():
         flows.append({
@@ -19,54 +10,31 @@ def create_flow_dictionaries(df):
             "Deadline": int(row["Deadline"]),
             "Execution Time": int(row["Execution Time"]),
             "Queue": int(row["Queue"]),
-            "w": int(row["w"]),  # Number of allowed misses
-            "h": int(row["h"])   # Number of mandatory hits
+            "w": int(row["w"]),
+            "h": int(row["h"])
         })
     return flows
 
 def setup_gurobi_model(hyperperiod):
-    """
-    Initialize and configure the Gurobi model.
-    
-    Args:
-        hyperperiod (int): The computed hyperperiod for the scheduling horizon.
-    
-    Returns:
-        gp.Model: Configured Gurobi model.
-        dict: Dictionary to store solver parameters.
-    """
     model = gp.Model("NetworkScheduler")
-    model.setParam('OutputFlag', 1)  # Enable output
-    model.setParam('MIPGap', 0.01)   # 1% optimality gap
-    model.setParam('MIPFocus', 1)    # Focus on feasible solutions
-    model.setParam('Threads', 0)        # Use 20 threads
+    model.setParam('OutputFlag', 1)
+    model.setParam('MIPGap', 0.01)
+    model.setParam('MIPFocus', 1)
+    model.setParam('Threads', 0)
     model.setParam('Cuts', 3)
     model.setParam('Presolve', 2)
-    model.setParam('LazyConstraints', 1) # Support for callbacks
-    model.setParam('TimeLimit', 3600) 
+    model.setParam('LazyConstraints', 1)
+    model.setParam('TimeLimit', 3600)
     
     solver_params = {
-        'Cipg': 96,  # Inter-packet gap
+        'Cipg': 96,
         't_max': hyperperiod,
-        'M': hyperperiod  # Big M for logical constraints
+        'M': hyperperiod
     }
     
     return model, solver_params
 
 def generate_packet_instances(model, flows, hyperperiod):
-    """
-    Generate packet instances and decision variables for the Gurobi model.
-    
-    Args:
-        model (gp.Model): Gurobi model to add variables to.
-        flows (list): List of flow dictionaries.
-        hyperperiod (int): The scheduling hyperperiod.
-    
-    Returns:
-        dict: Start time variables for each packet.
-        dict: Scheduling decision variables for BE packets.
-        list: List of packet instance dictionaries.
-    """
     start_times = {}
     is_scheduled = {}
     packet_instances = []
@@ -88,7 +56,6 @@ def generate_packet_instances(model, flows, hyperperiod):
             queue_class = base_class if group_index < h else 8
             pkt_id = f'P{flow["Flow"][1:]}_{j+1}'
             
-            # Decision variables
             s_var = model.addVar(vtype=GRB.INTEGER, lb=0, ub=hyperperiod, name=f"start_{pkt_id}")
             start_times[pkt_id] = s_var
             
@@ -96,7 +63,7 @@ def generate_packet_instances(model, flows, hyperperiod):
                 sched_var = model.addVar(vtype=GRB.BINARY, name=f"sched_{pkt_id}")
                 is_scheduled[pkt_id] = sched_var
             else:
-                is_scheduled[pkt_id] = 1  # Always scheduled for TT
+                is_scheduled[pkt_id] = 1
             
             packet_instances.append({
                 "Flow": flow["Flow"],
