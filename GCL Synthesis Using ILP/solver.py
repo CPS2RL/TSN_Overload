@@ -3,17 +3,7 @@ from gurobipy import GRB
 import time
 
 class GapStabilityCallback:
-    """
-    Callback to monitor gap stability during Gurobi optimization.
-    """
     def __init__(self, max_stable_iterations=5, check_interval=20000):
-        """
-        Initialize the callback with stability parameters.
-        
-        Args:
-            max_stable_iterations (int): Number of stable gap checks to stop.
-            check_interval (int): Node interval for gap checks.
-        """
         self.max_stable_iterations = max_stable_iterations
         self.check_interval = check_interval
         self.last_gap = None
@@ -22,13 +12,6 @@ class GapStabilityCallback:
         self.gap_history = []
         
     def __call__(self, model, where):
-        """
-        Callback function to monitor gap stability.
-        
-        Args:
-            model (gp.Model): Gurobi model.
-            where (int): Gurobi callback location.
-        """
         if where == GRB.Callback.MIP:
             self.iteration_count += 1
             
@@ -72,18 +55,7 @@ class GapStabilityCallback:
                         model.terminate()
 
 def setup_objective(model, packet_instances, is_scheduled):
-    """
-    Set up the objective function to maximize weighted sum of scheduled BE packets.
-    
-    Args:
-        model (gp.Model): Gurobi model.
-        packet_instances (list): List of packet instance dictionaries.
-        is_scheduled (dict): Scheduling decision variables for BE packets.
-    
-    Returns:
-        int: Number of BE packets.
-    """
-    flow_weights = {"F1": 1.0}  # Default weights
+    flow_weights = {"F1": 1.0}
     weighted_be_sum = 0
     be_packet_count = 0
     
@@ -105,18 +77,6 @@ def setup_objective(model, packet_instances, is_scheduled):
     return be_packet_count
 
 def solve_model(model, gap_callback):
-    """
-    Solve the Gurobi model with gap stability monitoring.
-    
-    Args:
-        model (gp.Model): Gurobi model to optimize.
-        gap_callback (GapStabilityCallback): Callback for gap stability monitoring.
-    
-    Returns:
-        float: Execution time in seconds.
-        list: Gap history from callback.
-        str: Reason for stopping optimization.
-    """
     print("Starting optimization with gap stability monitoring...")
     print(f"Will stop if gap remains stable for {gap_callback.max_stable_iterations} consecutive checks")
     print(f"Checking every {gap_callback.check_interval:,} nodes")
