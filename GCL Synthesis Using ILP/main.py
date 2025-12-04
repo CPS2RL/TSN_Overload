@@ -56,7 +56,7 @@ def main():
         gc.collect()
         
     except Exception as e:
-        print(f"✗ Error: {str(e)}")
+        print(f"Error: {str(e)}")
 
 if __name__ == "__main__":
     main()
