@@ -111,15 +111,25 @@ def add_constraints(model, packet_instances, start_times, is_scheduled, solver_p
                 e1 = pkt1["Execution Time"]
                 e2 = pkt2["Execution Time"]
                 
+                # Binary variables for overlap detection
                 overlap = model.addVar(vtype=GRB.BINARY, name=f"overlap_{stats['edf_constraints']}")
                 before1 = model.addVar(vtype=GRB.BINARY, name=f"before1_{stats['edf_constraints']}")
                 before2 = model.addVar(vtype=GRB.BINARY, name=f"before2_{stats['edf_constraints']}")
                 
+                # Define before1 and before2 based on packet timing
                 model.addConstr(s1 + e1 <= s2 + M * before1, name=f"before1_def_{stats['edf_constraints']}")
                 model.addConstr(s2 + e2 <= s1 + M * before2, name=f"before2_def_{stats['edf_constraints']}")
-                model.addConstr(before1 + before2 >= 1 - overlap, name=f"overlap_def_{stats['edf_constraints']}")
+                
+                model.addConstr(overlap <= 1 - before1 + before2, name=f"overlap_upper1_{stats['edf_constraints']}")
+                model.addConstr(overlap <= 1 + before1 - before2, name=f"overlap_upper2_{stats['edf_constraints']}")
+                model.addConstr(overlap >= before1 + before2 - 1, name=f"overlap_lower1_{stats['edf_constraints']}")
+                model.addConstr(overlap >= 1 - before1 - before2, name=f"overlap_lower2_{stats['edf_constraints']}")
+                
+                # If they overlap, earlier deadline goes first
                 model.addConstr(s1 + e1 + Cipg <= s2 + M * (1 - overlap), name=f"edf_{stats['edf_constraints']}")
                 stats['edf_constraints'] += 1
+                
+                # Track this pair as constrained
                 constrained_pairs.add((pkt1["Packet"], pkt2["Packet"]))
     
     max_execution_time = 12000 ### change according to your setup
