@@ -1,12 +1,12 @@
-## Weakly-Hard Real-Time Flow Scheduling in Time-Sensitive Networks.
+# Weakly-Hard Real-Time Flow Scheduling in Time-Sensitive Networks.
 
- We are synthesizing Gate Control List (GCL) for Time Aware Shaper (TAS).
+This repository contains the source code and the raw data files to test and reproduce the RTAS 2026 paper, "Weakly-Hard Real-Time Flow Scheduling in Time Sensitive Networks".
 
-### Objective of the Paper
-This paper addresses the challenge of scheduling traffic in Time-Sensitive Networking (TSN) systems where flows can tolerate a bounded number of deadline misses. Instead of enforcing strict hard real-time guarantees for every packet, we incorporate weakly-hard timing constraints—expressed as (m, K) or equivalently (w, h)—which allow controlled deadline violations while maintaining system stability. The goal is to synthesize efficient Gate Control Lists (GCLs) for the IEEE 802.1Qbv Time-Aware Shaper by ensuring all mandatory packets meet their deadlines while maximizing how many optional packets can be successfully transmitted.
+## Objective of the Paper
+This paper addresses the challenge of scheduling traffic in Time-Sensitive Networking (TSN) systems where flows can tolerate a bounded number of deadline misses. Instead of enforcing strict hard real-time guarantees for every packet, we incorporate weakly-hard timing constraints—expressed as (m, K) or equivalently (w, h)—--which allow controlled deadline violations while maintaining system stability. The goal is to synthesize efficient Gate Control Lists (GCLs) for the IEEE 802.1Qbv Time-Aware Shaper by ensuring all mandatory packets meet their deadlines while maximizing how many optional packets can be successfully transmitted.
 
-### Optimization Model
-We develop an ILP-based scheduling formulation that separates packets into mandatory and optional categories. Mandatory packets must always meet their deadlines, while optional packets are served only if resources permit. The optimization assigns weights to optional packets so that more important flows can be prioritized. The model ultimately aims to schedule as many optional packets as possible without compromising the timing guarantees of mandatory traffic.
+## Scheduling Algorithms
+We developed two algorithms to synthesize Gate Control Lists (GCLs): (a) Lazy Search and (b) an ILP-based approach. In both methods, packets are classified as mandatory or optional. Mandatory packets must always meet their deadlines to ensure system correctness, whereas optional packets are transmitted only when sufficient resources are available. The Lazy Search algorithm is scalable and but inefficient in resource utilization, leading to lower admission of optional packets. In contrast, the ILP-based approach jointly optimizes scheduling and resource allocation, resulting in higher admissibility of optional packets.
 
 
 
