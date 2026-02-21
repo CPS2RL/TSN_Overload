@@ -99,7 +99,7 @@ If you intend to run the experiments where it exceeds the certain number of cons
 ### Experiment 1
 Here, we have compared schedulability ratio and optional packet admissibility ratio for ILP and Lazy Serach algorithm. We varied our number of flows as 16, 32, and 48 flows. In order to run the code, first empty `Results` folder under each number of flows (for example, navigate `Artifact_Eval_RTAS/Experiment_1/ILP/flow_48/Results/flows_48_u_0.8`):
 
-**ILP**
+#### ILP
 Command to execute only one .csv file.
 ```bash
 cd path/to/Artifact_Eval_RTAS/Experiment_1/ILP/
@@ -107,10 +107,18 @@ python main.py flows_48/input_csvs/flows_48_u_0.8/flows_48_u_0.8_7q_run_01.csv
 ```
 Suppose, you want to run for number of flows=32 with utilization rate= 1.0, you need to empty the `Results` directory and then run this command `python main.py flows_32/input_csvs/flows_32_u_1.0/flows_32_u_1.0_7q_run_01.csv`. In similar way, for all the number of flows with their utilization level you can run the code to extract solution.
 
-**Notes**- To process **all** `.csv` files in `input_csvs/` at once, omit the filename argument:
+**Notes**---To process **all** `.csv` files in `input_csvs/` at once, omit the filename argument:
   ```bash
   python main.py flows_48/input_csvs/flows_48_u_0.8
   ```
+#### Lazy Search (Heristic)
+Command to execute only one .csv file:
+```bash
+cd path/to/Artifact_Eval_RTAS/Experiment_1/Heuristic/
+python main.py flows_48/input_csvs/flows_48_u_0.8/flows_48_u_0.8_7q_run_01.csv
+```
+and omit the filename argument to run all the .csv files in the specified folder.
+
 
 
 
