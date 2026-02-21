@@ -9,7 +9,7 @@ This paper addresses the challenge of scheduling traffic in Time-Sensitive Netwo
 We developed two algorithms to synthesize Gate Control Lists (GCLs): (a) Lazy Search and (b) an ILP-based approach. In both methods, packets are classified as mandatory or optional. Mandatory packets must always meet their deadlines to ensure system correctness, whereas optional packets are transmitted only when sufficient resources are available. The Lazy Search algorithm is scalable and but inefficient in resource utilization, leading to lower admission of optional packets. In contrast, the ILP-based approach jointly optimizes scheduling and resource allocation, resulting in higher admissibility of optional packets.
 
 ## Repository
-The link for our repository is: https://anonymous.4open.science/r/TSN_Overload/README.md 
+The link for our repository is: https://anonymous.4open.science/r/TSN_Overload/README.md . This is an anonymized github repository (as for the double blinded evaluation). Please download the repository using the `Download Repository` from the upper right.
 
 ## Environment Setup
 First, we need to set up our local environment to run the artifact. We can set up the environment for windows and Linux. We also recommend setting up a [conda](https://www.anaconda.com/download/success) environment for python. During installation, select "Add Anaconda to PATH" option. Example installation on Linux:
