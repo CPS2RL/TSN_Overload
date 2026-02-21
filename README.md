@@ -8,20 +8,21 @@ This paper addresses the challenge of scheduling traffic in Time-Sensitive Netwo
 ## Scheduling Algorithms
 We developed two algorithms to synthesize Gate Control Lists (GCLs): (a) Lazy Search and (b) an ILP-based approach. In both methods, packets are classified as mandatory or optional. Mandatory packets must always meet their deadlines to ensure system correctness, whereas optional packets are transmitted only when sufficient resources are available. The Lazy Search algorithm is scalable and but inefficient in resource utilization, leading to lower admission of optional packets. In contrast, the ILP-based approach jointly optimizes scheduling and resource allocation, resulting in higher admissibility of optional packets.
 
+## Repository
+The link for our repository is: https://anonymous.4open.science/r/TSN_Overload/README.md 
+
 ## Environment Setup
 First, we need to set up our local environment to run the artifact. We can set up the environment for windows and Linux. We also recommend setting up a [conda](https://www.anaconda.com/download/success) environment for python. During installation, select "Add Anaconda to PATH" option. Example installation on Linux:
 ```
 bash Anaconda3-2025.12.1-Linux-x86_64.sh
 ```
-For windows run the downloaded ".exe" file to install anaconda into your system. After installing anaconda, navigate to the project directory:
+For windows run the downloaded `.exe` file to install anaconda into your system. After installing anaconda, navigate to the project directory:
 ```
 cd path/to/Artifact_Eval_RTAS
 ```
-
 Below here, we will describe the environment setup in both operating system:
+
 ### Linux
-
-
 Run the setup script which will create the conda environment, install required pakages including fonts to plot exactly as in the paper:
 ```
 bash setup.sh
@@ -32,12 +33,7 @@ conda activate ae_79
 ```
 
 ### Windows
-### Windows
 
-After installing Anaconda, open Anaconda Prompt and navigate to the project directory:
-```
-cd path\to\Artifact_Eval_RTAS
-```
 Create and activate the conda environment:
 ```
 conda create -n ae_79 python=3.13.9 -y
