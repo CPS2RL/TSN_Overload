@@ -158,7 +158,41 @@ The generated results will be stored in:
 Figures/Experiment_3/
 ```
 
+### Experiment 4: Evaluating Dedicated Queue Reservation for Optional Flows
 
+This experiment evaluates the benefit of reserving dedicated queues for optional flows. We compare the proposed ILP-based approach with a baseline configuration where all flows are allowed to use all 8 queues, and the scheduling objective is to minimize response time.
+
+We analyze the impact of these strategies by comparing the percentage of successfully scheduled mandatory and optional packets.
+
+To reproduce the results, execute:
+
+```bash
+cd path/to/Artifact_Eval_RTAS/Experiment_4/
+python run_experiments.py ex4
+```
+
+The generated outputs will be available in:
+
+```
+Figures/Experiment_4/
+```
+
+### Experiment 5: Studying Weakly-Hard Requirements
+
+This experiment investigates the impact of different weakly-hard constraints on system schedulability. We evaluate multiple ((w,h)) configurations, including **(1,1)**, **(2,1)**, and **(1,2)**, and compare them with the hard real-time case, where no deadline violations are allowed. The results highlight the schedulability improvement achieved by relaxing strict real-time requirements.
+
+To reproduce the results, run:
+
+```bash id="x7k2c9"
+cd path/to/Artifact_Eval_RTAS/Experiment_5/
+python run_experiments.py ex5
+```
+
+The generated outputs will be stored in:
+
+```id="a4r9dz"
+Figures/Experiment_5/
+```
 
 
 
