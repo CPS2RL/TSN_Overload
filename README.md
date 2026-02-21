@@ -44,9 +44,13 @@ Install the required packages:
 pip install -r requirements.txt
 ```
 
+## Optimizer Setup
+We have formulated an ILP-based Gate Control Lists (GCLs) extraction method to optimize the admissibility of the optional packets. For the optimization module, we are using **Gurobi** for solving the ILP model. Gurobi license is necessary to run the ILP over the a certain number of constraints. Without installing licesnce you can run the experiments with some sample inputs. See [Sample Runs of the Experiments](#sample-runs-of-the-experiments).
+
+A Gurobi requires a license is necessary to run the full experiments. 
 
 
-## Sample of Experiment
+## Sample Runs of the Experiments
 
 Navigate to the folder:
 
