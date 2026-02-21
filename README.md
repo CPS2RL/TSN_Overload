@@ -202,7 +202,7 @@ Figures/Experiment_5/
 ## Run All Experiments
 > **Note:** Running this experiment from scratch may take several hours to days for each data point depending on the hardware configuration and **the optimizer results can vary as well**. Most our experiments are done on high performance computer except Experiment 2 (where we tested our optimization model on regular device).
 
-### Experiment 1: Comparing Lazy Search and ILP
+### Experiment 1
 
 This section explains how to run both the ILP-based and Lazy Search (heuristic) algorithms using the provided input files. Each experiment is executed using a `.csv` file that defines the flow configuration.
 
@@ -255,8 +255,8 @@ This will automatically execute the algorithm for every input instance in the se
 - Results for each run are saved as `.csv` files under the `Results/` directory of the respective experiment folder.
 
 
-### Experiment 2: Stress Test_
-For device configuration that we had used, see [Experminet 2: Stress Test](### experiment_2:_stress_test)
+### Experiment 2
+For device configuration that we had used, see [Experminet 2: Stress Test](### experiment_2_stress_test)
 
 
 
