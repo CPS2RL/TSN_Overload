@@ -214,12 +214,14 @@ To execute the ILP solver for a single input instance, run:
 cd path/to/Artifact_Eval_RTAS/Experiment_1/ILP/
 python main.py flows_48/input_csvs/flows_48_u_0.8/flows_48_u_0.8_7q_run_01.csv
 ```
+Output: `flows_48/Results/flows_48_u_0.8`
 
 For example, to evaluate a case with 32 flows and utilization = 1.0, use:
 
 ```bash
 python main.py flows_32/input_csvs/flows_32_u_1.0/flows_32_u_1.0_7q_run_01.csv
 ```
+
 Similarly, you can test other flow sizes and utilization levels by selecting the corresponding input file.
 
 
@@ -229,10 +231,10 @@ To run the heuristic method for a single input instance:
 
 ```bash
 cd path/to/Artifact_Eval_RTAS/Experiment_1/Heuristic/
-python main.py input_csvs/flows_48/flows_48_u_0.8/flows_48_u_0.8_7q_run_01.csv
+python main.py flows_48/input_csvs/flows_48_u_0.8/flows_48_u_0.8_7q_run_01.csv
 ```
+Output: `flows_48/Results/flows_48_u_0.8`
 
----
 
 #### Running All Input Instances
 
@@ -242,23 +244,24 @@ To process all `.csv` files within a directory at once, omit the filename argume
 python main.py flows_48/input_csvs/flows_48_u_0.8
 ```
 
-This will automatically execute the algorithm for every input instance in the selected directory.
+This will automatically execute the algorithm for every input instance in the selected directory and the outputs will be saved on their corresponding directory.
 
-
-
-
-
-
-
-
-
-## Notes
+### Notes
 
 - To process **all** `.csv` files in `input_csvs/` at once, omit the filename argument:
   ```bash
   python main.py
   ```
 - Results for each run are saved as `.csv` files under the `Results/` directory of the respective experiment folder.
+
+
+### Experiment 2: Stress Test_
+For device configuration that we had used, see [Experminet 2: Stress Test](### experiment_2:_stress_test)
+
+
+
+
+
 #### Installation
 
 #### Prerequisites
