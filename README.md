@@ -47,7 +47,7 @@ pip install -r requirements.txt
 ## Optimizer Setup
 We have formulated an ILP-based Gate Control Lists (GCLs) extraction method to optimize the admissibility of the optional packets. For the optimization module, we are using **Gurobi** for solving the ILP model. Gurobi license is necessary to run the ILP formulation. 
 
-#### Note: Without installing licesnce you can still run the experiments under a certain number of constraints. I have provided sample inputs to run individual experiments which can be run without any license. See [Sample Runs of the Experiments](#sample-runs-of-the-experiments).
+#### Note: Without installing licesnce, you can still run the experiments under a certain number of constraints. I have provided sample inputs to run individual experiments which can be run without any license. See [Sample Runs of the Experiments](#sample-runs-of-the-experiments).
 
 Gurobi licese can be installed from the reference of [set up a Gurobi lincese](https://support.gurobi.com/hc/en-us/articles/12872879801105-How-do-I-retrieve-and-set-up-a-Gurobi-license). If you are an academic user, you can install the lincese form [here]([https://portal.gurobi.com/iam/licenses/request](https://support.gurobi.com/hc/en-us/articles/4534601245713-How-do-I-get-started-with-Gurobi-for-academic-users). Make sure the license is installed inside the python environment.
 
@@ -93,11 +93,44 @@ python main.py input_csvs/sample_1.csv
 Output: `Experment_5_Hard_deadline/Results/`
 
 
+
+
+## Reproducing the Results
+
+We conducted five sets of experiments (Experiment 1–5). In all experiments, the total switch utilization is varied from **0.4 to 1.2** (i.e., [0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2]). For each utilization level, we generated 100 random input instances.
+
+Running all experiments from scratch may take a significant amount of time. For example, when the number of flows is **48** and the utilization is **0.8**, solving a single instance may require **30–60 minutes** using the optimizer. Therefore, for convenience and reproducibility, we provide all raw output files in the `Results` directory. These files can be directly used to regenerate all figures and tables reported in the paper.
+
+
+### Experiment 1: Comparing Lazy Search with ILP
+
+In this experiment, we compare the schedulability ratio and optional packet admissibility ratio between the ILP-based and Lazy Search algorithms. The number of flows is varied as 16, 32, and 48.
+
+To reproduce the results corresponding to Fig. 8(a)–8(e), run:
+
+```bash
+cd path/to/Artifact_Eval_RTAS/Experiment_1/
+python run_experiments.py ex1
+```
+
+The generated figures will be saved in:
+
+```
+Figures/Experiment_1/
+```
+
+
+> **Note:** Running this experiment from scratch may take several hours to days for each data point depending on the hardware configuration and the optimizer results can vary as well.
+
+
+
+
+
 ## Run All Experiments
 
 If you intend to run the experiments where it exceeds the certain number of constriants, you need Gurobi license (See [Optimizer Setup](#optimizer-setup)). The experiments are listed as Experiment_1, Experiment_2, Experiment_3, Experiment_4, and Experiment_5. For all the experiments, we had varied our utilization rate from 0.4 to 1.2 ([0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2]) and for each utilization level, we have tested both our algorithms with 100 generated inputs.
 ### Experiment 1
-Here, we have compared schedulability ratio and optional packet admissibility ratio for ILP and Lazy Serach algorithm. We varied our number of flows as 16, 32, and 48 flows. In order to run the code, first empty `Results` folder under each number of flows (for example, navigate `Artifact_Eval_RTAS/Experiment_1/ILP/flow_48/Results/flows_48_u_0.8`):
+In order to run the code, first empty `Results` folder under each number of flows (for example, navigate `Artifact_Eval_RTAS/Experiment_1/ILP/flow_48/Results/flows_48_u_0.8`):
 
 #### ILP
 Command to execute only one .csv file.
