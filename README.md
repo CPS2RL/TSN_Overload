@@ -59,7 +59,9 @@ Navigate to the folder:
 ```
 cd path/to/Artifact_Eval_RTAS/Sample_run/
 ```
-The folder `Sample_run` containts examples of the each experiment for a single input file and it is possible to run without any licnese. 
+The folder `Sample_run` containts examples of the each experiment for a single input file and it is possible to run without any licnese. Feel free to test them, if you intend to run the codes.
+
+
 
 
 
