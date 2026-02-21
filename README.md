@@ -49,7 +49,7 @@ We have formulated an ILP-based Gate Control Lists (GCLs) extraction method to o
 
 #### Note: Without installing licesnce you can still run the experiments under a certain number of constraints. I have provided sample inputs to run individual experiments which can be run without any license. See [Sample Runs of the Experiments](#sample-runs-of-the-experiments).
 
-Gurobi licese can be installed from the reference of [set up a Gurobi lincese](https://support.gurobi.com/hc/en-us/articles/12872879801105-How-do-I-retrieve-and-set-up-a-Gurobi-license). If you are an academic user, you can install the lincese form [here](https://portal.gurobi.com/iam/licenses/request).  
+Gurobi licese can be installed from the reference of [set up a Gurobi lincese](https://support.gurobi.com/hc/en-us/articles/12872879801105-How-do-I-retrieve-and-set-up-a-Gurobi-license). If you are an academic user, you can install the lincese form [here]([https://portal.gurobi.com/iam/licenses/request](https://support.gurobi.com/hc/en-us/articles/4534601245713-How-do-I-get-started-with-Gurobi-for-academic-users). Make sure the license is installed inside the python environment.
 
 
 ## Sample Runs of the Experiments
