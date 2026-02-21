@@ -54,17 +54,61 @@ Gurobi licese can be installed from the reference of [set up a Gurobi lincese](h
 
 ## Sample Runs of the Experiments
 
-Navigate to the folder:
+The folder `Sample_run` containts examples of the each experiment for a single input file and it is possible to run without any **licnese**. We can run `Experiment_1`, `Experiment_4`, and `Experiment_5` in this way. Feel free to test them, if you intend to run the codes. In order to run the sample experiments, for example, Experiment_1_ILP, then do the following commands:
+Each experiment is self-contained in its own directory. Navigate into the experiment folder and run `main.py` from there. Results are saved as `.csv` files in the corresponding `Results/` directory.
+---
 
+#### Experiment 1 — ILP
+
+```bash
+cd path/to/Artifact_Eval_RTAS/Sample_run/Experiment_1_ILP/
+python main.py input_csvs/sample_1.csv
 ```
-cd path/to/Artifact_Eval_RTAS/Sample_run/
+Output: `Experiment_1_ILP/Results/`
+
+---
+
+#### Experiment 1 — Lazy Search
+
+```bash
+cd path/to/Artifact_Eval_RTAS/Sample_run/Experment_1_Lazy_Search/
+python main.py input_csvs/sample_1.csv
 ```
-The folder `Sample_run` containts examples of the each experiment for a single input file and it is possible to run without any licnese. Feel free to test them, if you intend to run the codes.
+Output: `Experment_1_Lazy_Search/Results/`
+
+---
+
+#### Experiment 4 — No Reserved Queue
+
+```bash
+cd path/to/Artifact_Eval_RTAS/Sample_run/Experment_4_No_Reserved_Queue/
+python main.py input_csvs/sample_1.csv
+```
+Output: `Experment_4_No_Reserved_Queue/Results/`
+
+---
+
+#### Experiment 5 — Hard Deadline
+
+```bash
+cd path/to/Artifact_Eval_RTAS/Sample_run/Experment_5_Hard_deadline/
+python main.py input_csvs/sample_1.csv
+```
+Output: `Experment_5_Hard_deadline/Results/`
+
+---
 
 
 
 
 
+## Notes
+
+- To process **all** `.csv` files in `input_csvs/` at once, omit the filename argument:
+  ```bash
+  python main.py
+  ```
+- Results for each run are saved as `.csv` files under the `Results/` directory of the respective experiment folder.
 #### Installation
 
 #### Prerequisites
