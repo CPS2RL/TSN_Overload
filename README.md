@@ -4,13 +4,13 @@ This repository contains the source code and the raw data files to test and repr
 
 ## Objective of the Paper
 This paper addresses the challenge of scheduling traffic in Time-Sensitive Networking (TSN) systems where flows can tolerate a bounded number of deadline misses. Instead of enforcing strict hard real-time guarantees for every packet, we incorporate weakly-hard timing constraints—expressed as (m, K) or equivalently (w, h)—--which allow controlled deadline violations while maintaining system stability. The goal is to synthesize efficient Gate Control Lists (GCLs) for the IEEE 802.1Qbv Time-Aware Shaper by ensuring all mandatory packets meet their deadlines while maximizing how many optional packets can be successfully transmitted.
-
+---
 ## Scheduling Algorithms
 We developed two algorithms to synthesize Gate Control Lists (GCLs): (a) Lazy Search and (b) an ILP-based approach. In both methods, packets are classified as mandatory or optional. Mandatory packets must always meet their deadlines to ensure system correctness, whereas optional packets are transmitted only when sufficient resources are available. The Lazy Search algorithm is scalable and but inefficient in resource utilization, leading to lower admission of optional packets. In contrast, the ILP-based approach jointly optimizes scheduling and resource allocation, resulting in higher admissibility of optional packets.
-
+---
 ## Repository
 The link for our repository is: https://anonymous.4open.science/r/TSN_Overload/README.md . This is an anonymized github repository (as for the double blinded evaluation). Please download the repository using the `Download Repository` from the upper right.
-
+---
 ## Environment Setup
 First, we need to set up our local environment to run the artifact. We can set up the environment for windows and Linux. We also recommend setting up a [conda](https://www.anaconda.com/download/success) environment for python. During installation, select "Add Anaconda to PATH" option. Example installation on Linux:
 ```
@@ -43,7 +43,7 @@ Install the required packages:
 ```
 pip install -r requirements.txt
 ```
-
+---
 ## Optimizer Setup
 We have formulated an ILP-based Gate Control Lists (GCLs) extraction method to optimize the admissibility of the optional packets. For the optimization module, we are using **Gurobi** for solving the ILP model. Gurobi license is necessary to run the ILP formulation. 
 
@@ -51,12 +51,11 @@ We have formulated an ILP-based Gate Control Lists (GCLs) extraction method to o
 
 Gurobi licese can be installed from the reference of [set up a Gurobi lincese](https://support.gurobi.com/hc/en-us/articles/12872879801105-How-do-I-retrieve-and-set-up-a-Gurobi-license). If you are an academic user, you can install the lincese form [here]([https://portal.gurobi.com/iam/licenses/request](https://support.gurobi.com/hc/en-us/articles/4534601245713-How-do-I-get-started-with-Gurobi-for-academic-users). Make sure the license is installed inside the python environment.
 
-
+---
 ## Sample Runs of the Experiments
 
 The folder `Sample_run` containts examples of the each experiment for a single input file and it is possible to run without any **licnese**. We can run `Experiment_1`, `Experiment_4`, and `Experiment_5` in this way. Feel free to test them, if you intend to run the codes. In order to run the sample experiments, for example, Experiment_1_ILP, then do the following commands:
 Each experiment is self-contained in its own directory. Navigate into the experiment folder and run `main.py` from there. Results are saved as `.csv` files in the corresponding `Results/` directory.
----
 
 #### Experiment 1 — ILP
 
@@ -66,7 +65,6 @@ python main.py input_csvs/sample_1.csv
 ```
 Output: `Experiment_1_ILP/Results/`
 
----
 
 #### Experiment 1 — Lazy Search
 
@@ -76,7 +74,6 @@ python main.py input_csvs/sample_1.csv
 ```
 Output: `Experment_1_Lazy_Search/Results/`
 
----
 
 #### Experiment 4 — No Reserved Queue
 
@@ -86,7 +83,6 @@ python main.py input_csvs/sample_1.csv
 ```
 Output: `Experment_4_No_Reserved_Queue/Results/`
 
----
 
 #### Experiment 5 — Hard Deadline
 
