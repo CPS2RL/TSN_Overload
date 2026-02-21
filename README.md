@@ -119,6 +119,49 @@ The generated figures will be saved in:
 Figures/Experiment_1/
 ```
 
+### Experiment 2: Stress Test
+
+This experiment presents the runtime behavior of the proposed ILP-based approach under different number of constraints. It highlights how the computation time grows as the scheduling problem becomes more complex.
+
+To generate the results corresponding to Fig. 9 and Table I, run the following commands:
+
+```bash
+cd path/to/Artifact_Eval_RTAS/Experiment_2/
+python run_experiments.py ex2
+```
+
+After execution, the figures and tables will be available in:
+
+```
+Figures/Experiment_2/
+```
+### Experiment 3: Impact of Weight on Optional Packets
+
+This experiment studies how packet weights influence the admission of optional packets. We consider a scenario with 48 flows at a total utilization of 1.0, using different weakly-hard parameters ((w,h)). Specifically, 50% of the flows are configured with ((1,1)) and the remaining 50% with ((1,2)).
+
+We evaluate three weight configurations:
+
+* Configuration 1: All flows are assigned equal weights.
+* Configuration 2: Flows with ((w,h) = (1,2)) are given a higher weight (100), while flows with ((w,h) = (1,1)) have a lower weight (1).
+* Configuration 3: The weight assignments in Configuration 2 are reversed.
+
+To regenerate Table II of the paper, execute:
+
+```bash
+cd path/to/Artifact_Eval_RTAS/Experiment_3/
+python run_experiments.py ex3
+```
+
+The generated results will be stored in:
+
+```
+Figures/Experiment_3/
+```
+
+
+
+
+
 
 > **Note:** Running this experiment from scratch may take several hours to days for each data point depending on the hardware configuration and the optimizer results can vary as well.
 
