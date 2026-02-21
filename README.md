@@ -97,7 +97,10 @@ Output: `Experment_5_Hard_deadline/Results/`
 
 If you intend to run the experiments where it exceeds the certain number of constriants, you need Gurobi license (See [Optimizer Setup](#optimizer-setup)). The experiments are listed as Experiment_1, Experiment_2, Experiment_3, Experiment_4, and Experiment_5. For all the experiments, we had varied our utilization rate from 0.4 to 1.2 ([0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2]) and for each utilization level, we have tested both our algorithms with 100 generated inputs.
 ### Experiment 1
-Here, we have compared schedulability ratio and optional packet admissibility ratio for ILP and Lazy Serach algorithm. We varied the utilization rate used in this 
+Here, we have compared schedulability ratio and optional packet admissibility ratio for ILP and Lazy Serach algorithm. In order to run the code:
+
+**ILP**
+Navigate 
 
 
 
