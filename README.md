@@ -183,14 +183,14 @@ This experiment investigates the impact of different weakly-hard constraints on 
 
 To reproduce the results, run:
 
-```bash id="x7k2c9"
+```bash
 cd path/to/Artifact_Eval_RTAS/Experiment_5/
 python run_experiments.py ex5
 ```
 
 The generated outputs will be stored in:
 
-```id="a4r9dz"
+```
 Figures/Experiment_5/
 ```
 
