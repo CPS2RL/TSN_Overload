@@ -179,7 +179,7 @@ Figures/Experiment_4/
 
 ### Experiment 5: Studying Weakly-Hard Requirements
 
-This experiment investigates the impact of different weakly-hard constraints on system schedulability. We evaluate multiple ((w,h)) configurations, including **(1,1)**, **(2,1)**, and **(1,2)**, and compare them with the hard real-time case, where no deadline violations are allowed. The results highlight the schedulability improvement achieved by relaxing strict real-time requirements.
+This experiment investigates the impact of different weakly-hard constraints on system schedulability. We evaluate multiple ((w,h)) configurations, including (1,1), (2,1), and (1,2), and compare them with the hard real-time case, where no deadline violations are allowed. The results highlight the schedulability improvement achieved by relaxing strict real-time requirements.
 
 To reproduce the results, run:
 
@@ -197,37 +197,55 @@ Figures/Experiment_5/
 
 
 
-> **Note:** Running this experiment from scratch may take several hours to days for each data point depending on the hardware configuration and the optimizer results can vary as well.
-
-
-
 
 
 ## Run All Experiments
+> **Note:** Running this experiment from scratch may take several hours to days for each data point depending on the hardware configuration and **the optimizer results can vary as well**. Most our experiments are done on high performance computer except Experiment 2 (where we tested our optimization model on regular device).
 
-If you intend to run the experiments where it exceeds the certain number of constriants, you need Gurobi license (See [Optimizer Setup](#optimizer-setup)). The experiments are listed as Experiment_1, Experiment_2, Experiment_3, Experiment_4, and Experiment_5. For all the experiments, we had varied our utilization rate from 0.4 to 1.2 ([0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2]) and for each utilization level, we have tested both our algorithms with 100 generated inputs.
-### Experiment 1
-In order to run the code, first empty `Results` folder under each number of flows (for example, navigate `Artifact_Eval_RTAS/Experiment_1/ILP/flow_48/Results/flows_48_u_0.8`):
+### Experiment 1: Comparing Lazy Search and ILP
 
-#### ILP
-Command to execute only one .csv file.
+This section explains how to run both the ILP-based and Lazy Search (heuristic) algorithms using the provided input files. Each experiment is executed using a `.csv` file that defines the flow configuration.
+
+#### ILP-Based Method
+
+To execute the ILP solver for a single input instance, run:
+
 ```bash
 cd path/to/Artifact_Eval_RTAS/Experiment_1/ILP/
 python main.py flows_48/input_csvs/flows_48_u_0.8/flows_48_u_0.8_7q_run_01.csv
 ```
-Suppose, you want to run for number of flows=32 with utilization rate= 1.0, you need to empty the `Results` directory and then run this command `python main.py flows_32/input_csvs/flows_32_u_1.0/flows_32_u_1.0_7q_run_01.csv`. In similar way, for all the number of flows with their utilization level you can run the code to extract solution.
 
-**Notes**---To process **all** `.csv` files in `input_csvs/` at once, omit the filename argument:
-  ```bash
-  python main.py flows_48/input_csvs/flows_48_u_0.8
-  ```
-#### Lazy Search (Heristic)
-Command to execute only one .csv file:
+For example, to evaluate a case with 32 flows and utilization = 1.0, use:
+
+```bash
+python main.py flows_32/input_csvs/flows_32_u_1.0/flows_32_u_1.0_7q_run_01.csv
+```
+Similarly, you can test other flow sizes and utilization levels by selecting the corresponding input file.
+
+
+#### Lazy Search (Heuristic)
+
+To run the heuristic method for a single input instance:
+
 ```bash
 cd path/to/Artifact_Eval_RTAS/Experiment_1/Heuristic/
-python main.py flows_48/input_csvs/flows_48_u_0.8/flows_48_u_0.8_7q_run_01.csv
+python main.py input_csvs/flows_48/flows_48_u_0.8/flows_48_u_0.8_7q_run_01.csv
 ```
-and omit the filename argument to run all the .csv files in the specified folder.
+
+---
+
+#### Running All Input Instances
+
+To process all `.csv` files within a directory at once, omit the filename argument. For example:
+
+```bash
+python main.py flows_48/input_csvs/flows_48_u_0.8
+```
+
+This will automatically execute the algorithm for every input instance in the selected directory.
+
+
+
 
 
 
