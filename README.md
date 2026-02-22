@@ -396,27 +396,27 @@ This will execute the model for every input instance in the selected directory a
 
 In this experiment, we first evaluate the hard real-time setting where no bounded deadline misses are allowed. To run this configuration, execute:
 
-```bash id="m2v8qd"
+```bash
 cd path/to/Artifact_Eval_RTAS/Experiment_5/w_0_h_1
 python main.py input_csvs/flows_48_u_1.0_8queues/flows_48_u_1.0_8q_run_01.csv
 ```
 
 The output will be saved in:
 
-```id="q9c1wl"
+```
 Results/flows_48_u_1.0/
 ```
 
 We also compare this setting with different weakly-hard constraints, including (w, h) = (1,1), (2,1), and (1,2). To run a specific configuration, update the corresponding directory. For example, to evaluate (w, h) = (1,1), execute:
 
-```bash id="r6t0zx"
+```bash
 cd path/to/Artifact_Eval_RTAS/Experiment_5/w_1_h_1
 python main.py input_csvs/flows_48_u_1.0/flows_48_u_1.0_7q_run_01.csv
 ```
 
 The generated output will be stored in:
 
-```id="z4p7hf"
+```
 Results/flows_48_u_1.0/
 ```
 
@@ -424,29 +424,10 @@ To run other weakly-hard configurations such as (2,1) or (1,2), change the direc
 
 To process all input instances in a directory, remove the file name and provide only the folder path. For example:
 
-```bash id="f3x9dn"
+```bash
 python main.py input_csvs/flows_48_u_1.0/
 ```
-interference. If an optional packet is scheduled before a mandatory, we utilize a guard band. Navigate to the folder **GCL Synthesis Using Lazy Search Heuristic** and this can be run similarly to the GCL synthesis ILP
 
-
-### No Reserved Queue
-We use an optimization model that assigns optional packets to a reserved queue. To evaluate whether this is better than keeping them in their original queues, we minimize packet response time while allowing flows to use all available queues. Navigate to the folder **GCL Synthesis with No Reserved Queue** and this can be run similarly to the GCL synthesis ILP, but with flow-to-queue assignment across all eight queues.
-
-
-### Hardware Experiment
-
-We validated our ILP-based scheduling algorithm on the [InnoRoute Real-Time HAT](https://innoroute.com/realtimehat/) to demonstrate feasibility and effectiveness in a real hardware environment. We have two following scenarios: (i) Proposed ILP with reserved queue for optional packets, and (ii) Response-time minimization without queue reservation (all flows across 8 queues). Configure the TSN switch egress port as all gate open (follow the documentation of [InnoRoute Real-Time HAT](https://innoroute.com/realtimehat/)). Take a set of flows and run  both optimization model to get the start time of each packet. Use their start time (gate open time) and generates VLAN-tagged UDP packets with precise timestamps (start time of packets). We send the packets through the switch using `tcpreplay`:
-```bash
-sudo tcpreplay -i RT0 --preload-pcap --timer=nano --loop=1 generated_packets.pcap
-```
-
-and capture the packets after forwarding through the switch:
-```bash
-sudo tcpdump -i RT0 -n -w captured_packets.pcap -tt -s 65535
-```
-
-Then we can analyze the captured packets to find out potential deadline violations. We can measure response time, R<sub>i</sub> and calculate Sparsity where Sparsity = R<sub>i</sub>/D<sub>i</sub> to generate Figure 12 of our paper.
 
 
 
