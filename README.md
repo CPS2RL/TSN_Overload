@@ -2,6 +2,31 @@
 
 This repository contains the source code and the raw data files to test and reproduce the RTAS 2026 paper, "Weakly-Hard Real-Time Flow Scheduling in Time Sensitive Networks".
 
+## Table of Contents
+
+- [Objective of the Paper](#objective-of-the-paper)  
+- [Scheduling Algorithms](#scheduling-algorithms)  
+- [Repository](#repository)  
+- [Environment Setup](#environment-setup)  
+  - [Linux](#linux)  
+  - [Windows](#windows)  
+- [Optimizer Setup](#optimizer-setup)  
+- [Sample Runs of the Experiments](#sample-runs-of-the-experiments)  
+- [Reproducing the Results](#reproducing-the-results)  
+  - [Experiment 1: Comparing Lazy Search with ILP](#experiment-1-comparing-lazy-search-with-ilp)  
+  - [Experiment 2: Stress Test](#experiment-2-stress-test)  
+  - [Experiment 3: Impact of Weight on Optional Packets](#experiment-3-impact-of-weight-on-optional-packets)  
+  - [Experiment 4: Evaluating Dedicated Queue Reservation for Optional Flows](#experiment-4-evaluating-dedicated-queue-reservation-for-optional-flows)  
+  - [Experiment 5: Studying Weakly-Hard Requirements](#experiment-5-studying-weakly-hard-requirements)  
+  - [Hardware Experiment](#hardware-experiment)  
+- [Run All Experiments](#run-all-experiments)  
+  - [Experiment 1](#experiment-1)  
+  - [Experiment 2](#experiment-2)  
+  - [Experiment 3](#experiment-3)  
+  - [Experiment 4](#experiment-4)  
+  - [Experiment 5](#experiment-5)  
+- [Notes and Practical Considerations](#notes-and-practical-considerations)  
+
 ## Objective of the Paper
 This paper addresses the challenge of scheduling traffic in Time-Sensitive Networking (TSN) systems where flows can tolerate a bounded number of deadline misses. Instead of enforcing strict hard real-time guarantees for every packet, we incorporate weakly-hard timing constraints—expressed as (m, K) or equivalently (w, h)—--which allow controlled deadline violations while maintaining system stability. The goal is to synthesize efficient Gate Control Lists (GCLs) for the IEEE 802.1Qbv Time-Aware Shaper by ensuring all mandatory packets meet their deadlines while maximizing how many optional packets can be successfully transmitted.
 
@@ -18,7 +43,7 @@ bash Anaconda3-2025.12.1-Linux-x86_64.sh
 ```
 For windows run the downloaded `.exe` file to install anaconda into your system. After installing anaconda, navigate to the project directory:
 ```
-cd path/to/Artifact_Eval_RTAS
+cd path/to/TSN_Overload
 ```
 Below here, we will describe the environment setup in both operating system:
 
@@ -60,7 +85,7 @@ Each experiment is self-contained in its own directory. Navigate into the experi
 #### Experiment 1 — ILP
 
 ```bash
-cd path/to/Artifact_Eval_RTAS/Sample_run/Experiment_1_ILP/
+cd path/to/TSN_Overload/Sample_run/Experiment_1_ILP/
 python main.py input_csvs/sample_1.csv
 ```
 Output: `Experiment_1_ILP/Results/`
@@ -69,7 +94,7 @@ Output: `Experiment_1_ILP/Results/`
 #### Experiment 1 — Lazy Search
 
 ```bash
-cd path/to/Artifact_Eval_RTAS/Sample_run/Experment_1_Lazy_Search/
+cd path/to/TSN_Overload/Sample_run/Experment_1_Lazy_Search/
 python main.py input_csvs/sample_1.csv
 ```
 Output: `Experment_1_Lazy_Search/Results/`
@@ -78,7 +103,7 @@ Output: `Experment_1_Lazy_Search/Results/`
 #### Experiment 4 — No Reserved Queue
 
 ```bash
-cd path/to/Artifact_Eval_RTAS/Sample_run/Experment_4_No_Reserved_Queue/
+cd path/to/TSN_Overload/Sample_run/Experment_4_No_Reserved_Queue/
 python main.py input_csvs/sample_1.csv
 ```
 Output: `Experment_4_No_Reserved_Queue/Results/`
@@ -87,7 +112,7 @@ Output: `Experment_4_No_Reserved_Queue/Results/`
 #### Experiment 5 — Hard Deadline
 
 ```bash
-cd path/to/Artifact_Eval_RTAS/Sample_run/Experment_5_Hard_deadline/
+cd path/to/TSN_Overload/Sample_run/Experment_5_Hard_deadline/
 python main.py input_csvs/sample_1.csv
 ```
 Output: `Experment_5_Hard_deadline/Results/`
@@ -109,7 +134,7 @@ In this experiment, we compare the schedulability ratio and optional packet admi
 To reproduce the results corresponding to Fig. 8(a)–8(e), run:
 
 ```bash
-cd path/to/Artifact_Eval_RTAS/Experiment_1/
+cd path/to/TSN_Overload/Experiment_1/
 python run_experiments.py ex1
 ```
 
@@ -126,7 +151,7 @@ This experiment presents the runtime behavior of the proposed ILP-based approach
 To generate the results corresponding to Fig. 9 and Table I, run the following commands:
 
 ```bash
-cd path/to/Artifact_Eval_RTAS/Experiment_2/
+cd path/to/TSN_Overload/Experiment_2/
 python run_experiments.py ex2
 ```
 
@@ -148,7 +173,7 @@ We evaluate three weight configurations:
 To regenerate Table II of the paper, execute:
 
 ```bash
-cd path/to/Artifact_Eval_RTAS/Experiment_3/
+cd path/to/TSN_Overload/Experiment_3/
 python run_experiments.py ex3
 ```
 
@@ -167,7 +192,7 @@ We analyze the impact of these strategies by comparing the percentage of success
 To reproduce the results, execute:
 
 ```bash
-cd path/to/Artifact_Eval_RTAS/Experiment_4/
+cd path/to/TSN_Overload/Experiment_4/
 python run_experiments.py ex4
 ```
 
@@ -184,7 +209,7 @@ This experiment investigates the impact of different weakly-hard constraints on 
 To reproduce the results, run:
 
 ```bash
-cd path/to/Artifact_Eval_RTAS/Experiment_5/
+cd path/to/TSN_Overload/Experiment_5/
 python run_experiments.py ex5
 ```
 
@@ -198,7 +223,7 @@ Figures/Experiment_5/
 
 We validated our ILP-based scheduling algorithm on the [InnoRoute Real-Time HAT](https://innoroute.com/realtimehat/) to demonstrate feasibility and effectiveness in a real hardware environment. We have two following scenarios: (i) Proposed ILP with reserved queue for optional packets (both Lazy Search and ILP), and (ii) Response-time minimization without queue reservation (all flows across 8 queues). Configure the TSN switch egress port as all gate open (follow the documentation of [InnoRoute Real-Time HAT](https://innoroute.com/realtimehat/)). Take a set of flows and run  both optimization model to get the start time of each packet. Use their start time (gate open time) and generates VLAN-tagged UDP packets with precise timestamps (start time of packets). We send the packets through the switch using `tcpreplay`. The availability of the hardware and setting up are time consuming and because of that, we provided the raw the outputs as .csv file to generate Fig. 13(a)-(c). Execute the following commad to generate the figure:
 ```bash
-cd path/to/Artifact_Eval_RTAS/Sample_run/Hardware_Experiments/
+cd path/to/TSN_Overload/Sample_run/Hardware_Experiments/
 python run_experiments.py hardware
 ```
 
@@ -231,7 +256,7 @@ This section explains how to run both the ILP-based and Lazy Search (heuristic) 
 To execute the ILP solver for a single input instance, run:
 
 ```bash
-cd path/to/Artifact_Eval_RTAS/Experiment_1/ILP/
+cd path/to/TSN_Overload/Experiment_1/ILP/
 python main.py flows_48/input_csvs/flows_48_u_0.8/flows_48_u_0.8_7q_run_01.csv
 ```
 Output: `flows_48/Results/flows_48_u_0.8`
@@ -250,7 +275,7 @@ Similarly, you can test other flow sizes and utilization levels by selecting the
 To run the heuristic method for a single input instance:
 
 ```bash
-cd path/to/Artifact_Eval_RTAS/Experiment_1/Heuristic/
+cd path/to/TSN_Overload/Experiment_1/Heuristic/
 python main.py flows_48/input_csvs/flows_48_u_0.8/flows_48_u_0.8_7q_run_01.csv
 ```
 Output: `flows_48/Results/flows_48_u_0.8`
@@ -282,7 +307,7 @@ For details about the hardware configuration, please refer to [Experiment 2: Str
 To execute the experiment for a specific number of packets, run:
 
 ```bash
-cd path/to/Artifact_Eval_RTAS/Experiment_2/
+cd path/to/TSN_Overload/Experiment_2/
 python main.py input_csvs/flows_48_u_0.8_p201/flows_48_u_0.8_p201_run_01.csv
 ```
 
@@ -308,7 +333,7 @@ This experiment is conducted under three different configurations. For details a
 To run configuration 1, execute:
 
 ```bash
-cd path/to/Artifact_Eval_RTAS/Experiment_3/No_weight
+cd path/to/TSN_Overload/Experiment_3/No_weight
 python main.py input_csvs/flows_48_u_1.0_7q_run_01.csv
 ```
 
@@ -323,7 +348,7 @@ Results/
 To run configuration 2, execute:
 
 ```bash
-cd path/to/Artifact_Eval_RTAS/Experiment_3/w_1_h_2_100
+cd path/to/TSN_Overload/Experiment_3/w_1_h_2_100
 python main.py input_csvs/flows_48_u_1.0_7q_run_01.csv
 ```
 
@@ -338,7 +363,7 @@ Results/
 To run configuration 3, execute:
 
 ```bash
-cd path/to/Artifact_Eval_RTAS/Experiment_3/w_1_h_1_100
+cd path/to/TSN_Overload/Experiment_3/w_1_h_1_100
 python main.py input_csvs/flows_48_u_1.0_7q_run_01.csv
 ```
 
@@ -361,7 +386,7 @@ This section describes how to run the ILP-based approaches used to evaluate the 
 To run the baseline ILP model with reserved queues, execute:
 
 ```bash
-cd path/to/Artifact_Eval_RTAS/Experiment_4/ILP
+cd path/to/TSN_Overload/Experiment_4/ILP
 python main.py input_csvs/flows_48_u_1.0/flows_48_u_1.0_7q_run_01.csv
 ```
 
@@ -374,7 +399,7 @@ Results/flows_48_u_1.0/
 To run the ILP model without any reserved queue, execute:
 
 ```bash
-cd path/to/Artifact_Eval_RTAS/Experiment_4/ILP_Hard
+cd path/to/TSN_Overload/Experiment_4/ILP_Hard
 python main.py input_csvs/flows_48_u_1.0_8queues/flows_48_u_1.0_8q_run_01.csv
 ```
 
@@ -397,7 +422,7 @@ This will execute the model for every input instance in the selected directory a
 In this experiment, we first evaluate the hard real-time setting where no bounded deadline misses are allowed. To run this configuration, execute:
 
 ```bash
-cd path/to/Artifact_Eval_RTAS/Experiment_5/w_0_h_1
+cd path/to/TSN_Overload/Experiment_5/w_0_h_1
 python main.py input_csvs/flows_48_u_1.0_8queues/flows_48_u_1.0_8q_run_01.csv
 ```
 
@@ -410,7 +435,7 @@ Results/flows_48_u_1.0/
 We also compare this setting with different weakly-hard constraints, including (w, h) = (1,1), (2,1), and (1,2). To run a specific configuration, update the corresponding directory. For example, to evaluate (w, h) = (1,1), execute:
 
 ```bash
-cd path/to/Artifact_Eval_RTAS/Experiment_5/w_1_h_1
+cd path/to/TSN_Overload/Experiment_5/w_1_h_1
 python main.py input_csvs/flows_48_u_1.0/flows_48_u_1.0_7q_run_01.csv
 ```
 
