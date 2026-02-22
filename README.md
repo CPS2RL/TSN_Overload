@@ -25,7 +25,7 @@ This repository contains the source code and the raw data files to test and repr
   - [Experiment 3](#experiment-3)  
   - [Experiment 4](#experiment-4)  
   - [Experiment 5](#experiment-5)  
-- [Notes and Practical Considerations](#notes-and-practical-considerations)  
+- [Note](#notes)  
 
 ## Objective of the Paper
 This paper addresses the challenge of scheduling traffic in Time-Sensitive Networking (TSN) systems where flows can tolerate a bounded number of deadline misses. Instead of enforcing strict hard real-time guarantees for every packet, we incorporate weakly-hard timing constraints—expressed as (m, K) or equivalently (w, h)—--which allow controlled deadline violations while maintaining system stability. The goal is to synthesize efficient Gate Control Lists (GCLs) for the IEEE 802.1Qbv Time-Aware Shaper by ensuring all mandatory packets meet their deadlines while maximizing how many optional packets can be successfully transmitted.
@@ -453,6 +453,8 @@ To process all input instances in a directory, remove the file name and provide 
 python main.py input_csvs/flows_48_u_1.0/
 ```
 
+## Notes
+Running this experiment from scratch may take several hours to days for each data point depending on the hardware configuration and **the optimizer results can vary as well**. Most our experiments are done on high performance computer except Experiment 2 (where we tested our optimization model on regular device).
 
 
 
