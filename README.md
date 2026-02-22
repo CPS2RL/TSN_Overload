@@ -211,6 +211,17 @@ python run_experiments.py hardware
 ## Run All Experiments
 > **Note:** Running this experiment from scratch may take several hours to days for each data point depending on the hardware configuration and **the optimizer results can vary as well**. Most our experiments are done on high performance computer except Experiment 2 (where we tested our optimization model on regular device).
 
+First, remove all the result directory:
+**Linux**
+```bash
+find . -type d -name "Results" -exec rm -rf {} +
+```
+**Windows** using Poweshell
+```bash
+Get-ChildItem -Path . -Recurse -Directory -Filter "Results" | Remove-Item -Recurse -Force
+```
+
+
 ### Experiment 1
 
 This section explains how to run both the ILP-based and Lazy Search (heuristic) algorithms using the provided input files. Each experiment is executed using a `.csv` file that defines the flow configuration.
