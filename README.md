@@ -196,6 +196,12 @@ Figures/Experiment_5/
 
 ### Hardware Experiment
 
+We validated our ILP-based scheduling algorithm on the [InnoRoute Real-Time HAT](https://innoroute.com/realtimehat/) to demonstrate feasibility and effectiveness in a real hardware environment. We have two following scenarios: (i) Proposed ILP with reserved queue for optional packets (both Lazy Search and ILP), and (ii) Response-time minimization without queue reservation (all flows across 8 queues). Configure the TSN switch egress port as all gate open (follow the documentation of [InnoRoute Real-Time HAT](https://innoroute.com/realtimehat/)). Take a set of flows and run  both optimization model to get the start time of each packet. Use their start time (gate open time) and generates VLAN-tagged UDP packets with precise timestamps (start time of packets). We send the packets through the switch using `tcpreplay`. The availability of the hardware and setting up are time consuming and because of that, we provided the raw the outputs as .csv file to generate Fig. 13(a)-(c). Execute the following commad to generate the figure:
+```bash
+cd path/to/Artifact_Eval_RTAS/Sample_run/Hardware_Experiments/
+python run_experiments.py hardware
+```
+
 
 
 
