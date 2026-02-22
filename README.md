@@ -194,6 +194,9 @@ The generated outputs will be stored in:
 Figures/Experiment_5/
 ```
 
+### Hardware Experiment
+
+
 
 
 
@@ -256,58 +259,158 @@ This will automatically execute the algorithm for every input instance in the se
 
 
 ### Experiment 2
-For device configuration that we had used, see [Experminet 2: Stress Test](### experiment_2_stress_test)
 
+For details about the hardware configuration, please refer to [Experiment 2: Stress Test](#experiment-2-stress-test). In this experiment, the number of packets is varied as 201, 252, 306, 351, 402, 450, and 501.
 
+To execute the experiment for a specific number of packets, run:
 
-
-
-#### Installation
-
-#### Prerequisites
-- Python 3.7 or higher
-- pip package manager
-- Gurobi Optimizer (requires license)
-
-
--Get Lincense for Gurobi Optimizer from (https://www.gurobi.com/)
-
-#### Usage
-
-1. Prepare your input CSV file
-   - Navigate to `GCL Synthesis Using ILP/main.py`and change the directory of `input_file`
-2. Input csv format
-   | Flow | Period | Deadline | Execution  | w | h | Queue |
-   |------|--------|----------|------------|---|---|-------|
-   | F1   | 400000 | 400000   | 6000       | 1 | 2 | 6     |
-   | F2   | 500000 | 500000   | 8000       | 1 | 1 | 5     |
-   | ...  | ...    | ...      | ...        | ..| ..| ...   |
-   
-   
-
-
-### Impact of Weight on Optional Packets
-We use weights to assign relative priority for optional packets. By default, each flow has a weight of 1.0.
-
-#### How to Configure Flow Weights
-
-1. Navigate to `GCL Synthesis Using ILP/solver.py`
-2. Modify the `flow_weights` dictionary to assign custom weights to specific flows:
-```python
-flow_weights = {"F1": 1.0, "F2": 2.0, "F3": 0.5}
+```bash
+cd path/to/Artifact_Eval_RTAS/Experiment_2/
+python main.py input_csvs/flows_48_u_0.8_p201/flows_48_u_0.8_p201_run_01.csv
 ```
 
-#### Example
-```python
-flow_weights = {
-    "F1": 10.0, "F2": 5.0, "F3": 10.0 }
+The generated output will be stored in:
+
+```
+Results/flows_48_u_0.8_p201
 ```
 
-**Note:** You can design the flow weights based on your specific application requirements. Higher weights indicate higher priority for scheduling.
+To evaluate other cases (e.g., 252, 306, 351, 402, 450, and 501), update the packet identifier in the command by replacing `p201` with `p{number_of_packets}`. For example, to run the experiment with 252 packets, use:
 
+```bash
+python main.py input_csvs/flows_48_u_0.8_p252/flows_48_u_0.8_p252_run_01.csv
+```
+If you want to run all instances, just remove the file name and make it as `python main.py input_csvs`.
 
-### Lazy Search Alogrithm
-Our goal is to guarantee deadlines for mandatory packets while opportunistically scheduling optional packets during slack times using our Lazy Search heuristic. The algorithm orders packets, generates GCLs for mandatory flows using EDF, and then fills slack intervals with optional packets only when they can complete without interference. If an optional packet is scheduled before a mandatory, we utilize a guard band. Navigate to the folder **GCL Synthesis Using Lazy Search Heuristic** and this can be run similarly to the GCL synthesis ILP
+### Experiment 3
+
+This experiment is conducted under three different configurations. For details about the setup, please refer to [Experiment 3: Impact of Weight on Optional Packets](#experiment-3-impact-of-weight-on-optional-packets).
+
+#### Configuration 1
+
+To run configuration 1, execute:
+
+```bash
+cd path/to/Artifact_Eval_RTAS/Experiment_3/No_weight
+python main.py input_csvs/flows_48_u_1.0_7q_run_01.csv
+```
+
+The output will be saved in:
+
+```
+Results/
+```
+
+#### Configuration 2
+
+To run configuration 2, execute:
+
+```bash
+cd path/to/Artifact_Eval_RTAS/Experiment_3/w_1_h_2_100
+python main.py input_csvs/flows_48_u_1.0_7q_run_01.csv
+```
+
+The output will be saved in:
+
+```
+Results/
+```
+
+#### Configuration 3
+
+To run configuration 3, execute:
+
+```bash
+cd path/to/Artifact_Eval_RTAS/Experiment_3/w_1_h_1_100
+python main.py input_csvs/flows_48_u_1.0_7q_run_01.csv
+```
+
+The output will be saved in:
+
+```
+Results/
+```
+
+To process all input instances in a directory, remove the file name and provide only the folder path:
+
+```bash
+python main.py input_csvs
+```
+
+### Experiment 4
+
+This section describes how to run the ILP-based approaches used to evaluate the impact of dedicated queue reservation.
+
+To run the baseline ILP model with reserved queues, execute:
+
+```bash
+cd path/to/Artifact_Eval_RTAS/Experiment_4/ILP
+python main.py input_csvs/flows_48_u_1.0/flows_48_u_1.0_7q_run_01.csv
+```
+
+The generated output will be stored in:
+
+```
+Results/flows_48_u_1.0/
+```
+
+To run the ILP model without any reserved queue, execute:
+
+```bash
+cd path/to/Artifact_Eval_RTAS/Experiment_4/ILP_Hard
+python main.py input_csvs/flows_48_u_1.0_8queues/flows_48_u_1.0_8q_run_01.csv
+```
+
+The output will be saved in:
+
+```
+Results/flows_48_u_1.0/
+```
+
+To process all input instances in a directory, remove the file name and provide only the folder path. For example:
+
+```bash
+python main.py input_csvs/flows_48_u_1.0_8queues/
+```
+
+This will execute the model for every input instance in the selected directory and store the results in the corresponding output folder.
+
+### Experiment 5
+
+In this experiment, we first evaluate the hard real-time setting where no bounded deadline misses are allowed. To run this configuration, execute:
+
+```bash id="m2v8qd"
+cd path/to/Artifact_Eval_RTAS/Experiment_5/w_0_h_1
+python main.py input_csvs/flows_48_u_1.0_8queues/flows_48_u_1.0_8q_run_01.csv
+```
+
+The output will be saved in:
+
+```id="q9c1wl"
+Results/flows_48_u_1.0/
+```
+
+We also compare this setting with different weakly-hard constraints, including (w, h) = (1,1), (2,1), and (1,2). To run a specific configuration, update the corresponding directory. For example, to evaluate (w, h) = (1,1), execute:
+
+```bash id="r6t0zx"
+cd path/to/Artifact_Eval_RTAS/Experiment_5/w_1_h_1
+python main.py input_csvs/flows_48_u_1.0/flows_48_u_1.0_7q_run_01.csv
+```
+
+The generated output will be stored in:
+
+```id="z4p7hf"
+Results/flows_48_u_1.0/
+```
+
+To run other weakly-hard configurations such as (2,1) or (1,2), change the directory accordingly (e.g., `Experiment_5/w_2_h_1` or `Experiment_5/w_1_h_2`).
+
+To process all input instances in a directory, remove the file name and provide only the folder path. For example:
+
+```bash id="f3x9dn"
+python main.py input_csvs/flows_48_u_1.0/
+```
+interference. If an optional packet is scheduled before a mandatory, we utilize a guard band. Navigate to the folder **GCL Synthesis Using Lazy Search Heuristic** and this can be run similarly to the GCL synthesis ILP
 
 
 ### No Reserved Queue
