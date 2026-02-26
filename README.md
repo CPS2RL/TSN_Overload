@@ -295,7 +295,7 @@ This will automatically execute the algorithm for every input instance in the se
 
 - To process **all** `.csv` files in `input_csvs/` at once, omit the filename argument:
   ```bash
-  python main.py
+  python main.py flows_32/input_csvs/flows_32_u_1.0/
   ```
 - Results for each run are saved as `.csv` files under the `Results/` directory of the respective experiment folder.
 
