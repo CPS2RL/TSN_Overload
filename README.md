@@ -241,9 +241,9 @@ First, remove all the result directory:
 ```bash
 find . -type d -name "Results" -exec rm -rf {} +
 ```
-**Windows** using Poweshell
+**Windows** using Command Prompt
 ```bash
-Get-ChildItem -Path . -Recurse -Directory -Filter "Results" | Remove-Item -Recurse -Force
+for /d /r . %d in (Results) do @if exist "%d" rmdir /s /q "%d"
 ```
 
 
