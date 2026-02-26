@@ -94,7 +94,7 @@ Output: `Experiment_1_ILP/Results/`
 #### Experiment 1 — Lazy Search
 
 ```bash
-cd path/to/TSN_Overload/Sample_run/Experment_1_Lazy_Search/
+cd path/to/TSN_Overload/Sample_run/Experiment_1_Lazy_Search/
 python main.py input_csvs/sample_1.csv
 ```
 Output: `Experment_1_Lazy_Search/Results/`
@@ -103,7 +103,7 @@ Output: `Experment_1_Lazy_Search/Results/`
 #### Experiment 4 — No Reserved Queue
 
 ```bash
-cd path/to/TSN_Overload/Sample_run/Experment_4_No_Reserved_Queue/
+cd path/to/TSN_Overload/Sample_run/Experiment_4_No_Reserved_Queue/
 python main.py input_csvs/sample_1.csv
 ```
 Output: `Experment_4_No_Reserved_Queue/Results/`
@@ -112,7 +112,7 @@ Output: `Experment_4_No_Reserved_Queue/Results/`
 #### Experiment 5 — Hard Deadline
 
 ```bash
-cd path/to/TSN_Overload/Sample_run/Experment_5_Hard_deadline/
+cd path/to/TSN_Overload/Sample_run/Experiment_5_Hard_deadline/
 python main.py input_csvs/sample_1.csv
 ```
 Output: `Experment_5_Hard_deadline/Results/`
@@ -134,8 +134,8 @@ In this experiment, we compare the schedulability ratio and optional packet admi
 To reproduce the results corresponding to Fig. 8(a)–8(e), run:
 
 ```bash
-cd path/to/TSN_Overload/Experiment_1/
-python run_experiments.py ex1
+cd path/to/TSN_Overload/
+python run_experiments.py exp1
 ```
 
 The generated figures will be saved in:
@@ -151,8 +151,8 @@ This experiment presents the runtime behavior of the proposed ILP-based approach
 To generate the results corresponding to Fig. 9 and Table I, run the following commands:
 
 ```bash
-cd path/to/TSN_Overload/Experiment_2/
-python run_experiments.py ex2
+cd path/to/TSN_Overload/
+python run_experiments.py exp2
 ```
 
 After execution, the figures and tables will be available in:
@@ -173,8 +173,8 @@ We evaluate three weight configurations:
 To regenerate Table II of the paper, execute:
 
 ```bash
-cd path/to/TSN_Overload/Experiment_3/
-python run_experiments.py ex3
+cd path/to/TSN_Overload/
+python run_experiments.py exp3
 ```
 
 The generated results will be stored in:
@@ -192,8 +192,8 @@ We analyze the impact of these strategies by comparing the percentage of success
 To reproduce the results, execute:
 
 ```bash
-cd path/to/TSN_Overload/Experiment_4/
-python run_experiments.py ex4
+cd path/to/TSN_Overload/
+python run_experiments.py exp4
 ```
 
 The generated outputs will be available in:
@@ -209,8 +209,8 @@ This experiment investigates the impact of different weakly-hard constraints on 
 To reproduce the results, run:
 
 ```bash
-cd path/to/TSN_Overload/Experiment_5/
-python run_experiments.py ex5
+cd path/to/TSN_Overload/
+python run_experiments.py exp5
 ```
 
 The generated outputs will be stored in:
