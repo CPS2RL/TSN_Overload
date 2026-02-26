@@ -322,7 +322,7 @@ To evaluate other cases (e.g., 252, 306, 351, 402, 450, and 501), update the pac
 ```bash
 python main.py input_csvs/flows_48_u_0.8_p252/flows_48_u_0.8_p252_run_01.csv
 ```
-If you want to run all instances, just remove the file name and make it as `python main.py input_csvs`.
+If you want to run all instances, just remove the file name and make it as `python main.py input_csvs/flows_48_u_0.8_p252`.
 
 ### Experiment 3
 
@@ -457,5 +457,6 @@ python main.py input_csvs/flows_48_u_1.0/
 Running this experiment from scratch may take several hours to days for each data point depending on the hardware configuration and **the optimizer results can vary as well**. Most our experiments are done on high performance computer except Experiment 2 (where we tested our optimization model on regular device).
 
 
+The experiment with varying utilization rate needs to be run for all utilization rate (0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2) with all 100 instance of .csv file to reproduce the result which will follow the methodology of the paper.
 
 
