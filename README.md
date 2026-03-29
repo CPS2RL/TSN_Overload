@@ -1,6 +1,6 @@
 # Weakly-Hard Real-Time Flow Scheduling in Time-Sensitive Networks.
 
-This repository contains the source code and the raw data files to test and reproduce the RTAS 2026 paper, "Weakly-Hard Real-Time Flow Scheduling in Time Sensitive Networks".
+This repository contains the source code and the raw data files to test and reproduce the RTAS 2026 paper: **Weakly-Hard Real-Time Flow Scheduling in Time Sensitive Networks** [PDF](https://monowarhasan.info/papers/TSN_WH_RTAS26.pdf).
 
 ## Table of Contents
 
