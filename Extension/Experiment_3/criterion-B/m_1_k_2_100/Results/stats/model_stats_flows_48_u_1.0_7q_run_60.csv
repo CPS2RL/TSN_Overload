@@ -1,0 +1,4 @@
+Optimizer,Statistics for model 'QueueMapper',Problem type,Rows,Columns,Nonzeros,Continuous_Variables,Integer_Variables,Binary_Variables,Matrix range_Min,Matrix range_Max,Objective range_Min,Objective range_Max,Bounds range_Min,Bounds range_Max,RHS range_Min,RHS range_Max,Input_File,Solving_Time_Seconds,Solving_Time_Minutes,Statistics for model 'NetworkScheduler'
+Mapping,,MIP,49512,1872,191490,624,1248,624,1.0,2000000.0,1.0,2000000.0,1.0,2000000.0,1.0,5000000.0,flows_48_u_1.0_7q_run_60.csv,34.8613,0.581,
+GCL,,MIP,688070,286018,2195971,0,286018,285394,1.0,2000000.0,1.0,100.0,1.0,2000000.0,1.0,5000000.0,flows_48_u_1.0_7q_run_60.csv,3600.3792,60.0063,
+GCL,,MIP,688070,286018,2195971,0,286018,285394,1e+00,2e+06,1e+00,1e+02,1e+00,2e+06,1e+00,5e+06,flows_48_u_1.0_7q_run_60.csv,3600.4071,60.0068,

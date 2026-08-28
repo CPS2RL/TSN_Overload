@@ -1,0 +1,144 @@
+\ Model NetworkScheduler_copy
+\ LP format - for model browsing. Use MPS format to capture full model detail.
+Maximize
+ 
+Subject To
+ arrival_P14_9: start_P14_9 >= 400000
+ deadline_P14_10: start_P14_10 <= 492040
+ arrival_P16_9: start_P16_9 >= 400000
+ deadline_P27_10: start_P27_10 <= 497891
+ fifo_4986: - start_P14_10 + start_P15_2 <= -7851
+ fifo_6920: - start_P16_10 + start_P20_2 <= -9326
+ tie_break_tt_50: - start_P2_9 + start_P14_9 <= -8056
+ tie_break_tt_288: - start_P10_5 + start_P31_9 <= -1892
+ tie_break_tt_386: - start_P5_5 + start_P13_5 <= -7069
+ tie_break_tt_529: - start_P15_2 + start_P18_3 <= -6176
+ tie_break_tt_581: start_P16_9 - start_P31_9 <= -3599
+ tie_break_tt_582: start_P16_10 - start_P26_10 <= -3599
+ tie_break_tt_658: start_P17_3 - start_P20_2 <= -8272
+ tie_break_tt_660: - start_P17_3 + start_P22_3 <= -9074
+ tie_break_tt_813: start_P10_5 - start_P22_3 <= -7621
+ tie_break_tt_861: start_P5_5 - start_P24_3 <= -4253
+ tie_break_tt_867: start_P24_3 - start_P30_3 <= -11634
+ tie_break_tt_937: start_P26_10 - start_P27_10 <= -3181
+ tie_break_tt_1073: start_P2_9 - start_P28_5 <= -3704
+ tie_break_tt_1075: - start_P13_5 + start_P28_5 <= -10759
+ tie_break_tt_1170: - start_P18_3 + start_P30_3 <= -7335
+ nonoverlap1_4806: start_P2_9 - start_P10_5 - 1.2e+06 order_4806 <= -3704
+ nonoverlap2_4806: - start_P2_9 + start_P10_5 + 1.2e+06 order_4806
+   <= 1.192379e+06
+ nonoverlap1_4851: start_P2_9 - start_P22_3 - 1.2e+06 order_4851 <= -3704
+ nonoverlap2_4851: - start_P2_9 + start_P22_3 + 1.2e+06 order_4851
+   <= 1.190926e+06
+ nonoverlap1_9476: start_P5_5 - start_P10_5 - 1.2e+06 order_9476 <= -4253
+ nonoverlap2_9476: - start_P5_5 + start_P10_5 + 1.2e+06 order_9476
+   <= 1.192379e+06
+ nonoverlap1_9509: start_P5_5 - start_P17_3 - 1.2e+06 order_9509 <= -4253
+ nonoverlap2_9509: - start_P5_5 + start_P17_3 + 1.2e+06 order_9509
+   <= 1.191728e+06
+ nonoverlap1_9517: start_P5_5 - start_P20_2 - 1.2e+06 order_9517 <= -4253
+ nonoverlap2_9517: - start_P5_5 + start_P20_2 + 1.2e+06 order_9517
+   <= 1.190674e+06
+ nonoverlap1_13508: start_P10_5 - start_P13_5 - 1.2e+06 order_13508
+   <= -7621
+ nonoverlap2_13508: - start_P10_5 + start_P13_5 + 1.2e+06 order_13508
+   <= 1.192931e+06
+ nonoverlap1_13515: start_P10_5 - start_P14_9 - 1.2e+06 order_13515
+   <= -7621
+ nonoverlap2_13515: - start_P10_5 + start_P14_9 + 1.2e+06 order_13515
+   <= 1.191944e+06
+ nonoverlap1_13535: start_P10_5 - start_P18_3 - 1.2e+06 order_13535
+   <= -7621
+ nonoverlap2_13535: - start_P10_5 + start_P18_3 + 1.2e+06 order_13535
+   <= 1.193824e+06
+ nonoverlap1_13548: start_P10_5 - start_P24_3 - 1.2e+06 order_13548
+   <= -7621
+ nonoverlap2_13548: - start_P10_5 + start_P24_3 + 1.2e+06 order_13548
+   <= 1.188366e+06
+ nonoverlap1_13569: start_P10_5 - start_P28_5 - 1.2e+06 order_13569
+   <= -7621
+ nonoverlap2_13569: - start_P10_5 + start_P28_5 + 1.2e+06 order_13569
+   <= 1.189241e+06
+ nonoverlap1_13577: start_P10_5 - start_P30_3 - 1.2e+06 order_13577
+   <= -7621
+ nonoverlap2_13577: - start_P10_5 + start_P30_3 + 1.2e+06 order_13577
+   <= 1.192665e+06
+ nonoverlap1_15808: start_P13_5 - start_P20_2 - 1.2e+06 order_15808
+   <= -7069
+ nonoverlap2_15808: - start_P13_5 + start_P20_2 + 1.2e+06 order_15808
+   <= 1.190674e+06
+ nonoverlap1_17385: start_P14_9 - start_P22_3 - 1.2e+06 order_17385
+   <= -8056
+ nonoverlap2_17385: - start_P14_9 + start_P22_3 + 1.2e+06 order_17385
+   <= 1.190926e+06
+ nonoverlap1_18828: start_P15_2 - start_P17_3 - 1.2e+06 order_18828
+   <= -7851
+ nonoverlap2_18828: - start_P15_2 + start_P17_3 + 1.2e+06 order_18828
+   <= 1.191728e+06
+ nonoverlap1_18837: start_P15_2 - start_P20_2 - 1.2e+06 order_18837
+   <= -7851
+ nonoverlap2_18837: - start_P15_2 + start_P20_2 + 1.2e+06 order_18837
+   <= 1.190674e+06
+ nonoverlap1_20981: start_P17_3 - start_P18_3 - 1.2e+06 order_20981
+   <= -8272
+ nonoverlap2_20981: - start_P17_3 + start_P18_3 + 1.2e+06 order_20981
+   <= 1.193824e+06
+ nonoverlap1_20994: start_P17_3 - start_P24_3 - 1.2e+06 order_20994
+   <= -8272
+ nonoverlap2_20994: - start_P17_3 + start_P24_3 + 1.2e+06 order_20994
+   <= 1.188366e+06
+ nonoverlap1_21023: start_P17_3 - start_P30_3 - 1.2e+06 order_21023
+   <= -8272
+ nonoverlap2_21023: - start_P17_3 + start_P30_3 + 1.2e+06 order_21023
+   <= 1.192665e+06
+ nonoverlap1_21410: start_P18_3 - start_P20_2 - 1.2e+06 order_21410
+   <= -6176
+ nonoverlap2_21410: - start_P18_3 + start_P20_2 + 1.2e+06 order_21410
+   <= 1.190674e+06
+ nonoverlap1_22170: start_P20_2 - start_P24_3 - 1.2e+06 order_22170
+   <= -9326
+ nonoverlap2_22170: - start_P20_2 + start_P24_3 + 1.2e+06 order_22170
+   <= 1.188366e+06
+ nonoverlap1_22191: start_P20_2 - start_P28_5 - 1.2e+06 order_22191
+   <= -9326
+ nonoverlap2_22191: - start_P20_2 + start_P28_5 + 1.2e+06 order_22191
+   <= 1.189241e+06
+ nonoverlap1_22201: start_P20_2 - start_P30_3 - 1.2e+06 order_22201
+   <= -9326
+ nonoverlap2_22201: - start_P20_2 + start_P30_3 + 1.2e+06 order_22201
+   <= 1.192665e+06
+ nonoverlap1_22791: start_P22_3 - start_P28_5 - 1.2e+06 order_22791
+   <= -9074
+ nonoverlap2_22791: - start_P22_3 + start_P28_5 + 1.2e+06 order_22791
+   <= 1.189241e+06
+Bounds
+ start_P2_9 free
+ start_P5_5 free
+ start_P10_5 free
+ start_P13_5 free
+ start_P14_9 free
+ start_P14_10 free
+ start_P15_2 free
+ start_P16_9 free
+ start_P16_10 free
+ start_P17_3 free
+ start_P18_3 free
+ start_P20_2 free
+ start_P22_3 free
+ start_P24_3 free
+ start_P26_10 free
+ start_P27_10 free
+ start_P28_5 free
+ start_P30_3 free
+ start_P31_9 free
+Binaries
+ order_4806 order_4851 order_9476 order_9509 order_9517 order_13508
+ order_13515 order_13535 order_13548 order_13569 order_13577 order_15808
+ order_17385 order_18828 order_18837 order_20981 order_20994 order_21023
+ order_21410 order_22170 order_22191 order_22201 order_22791
+Generals
+ start_P2_9 start_P5_5 start_P10_5 start_P13_5 start_P14_9 start_P14_10
+ start_P15_2 start_P16_9 start_P16_10 start_P17_3 start_P18_3 start_P20_2
+ start_P22_3 start_P24_3 start_P26_10 start_P27_10 start_P28_5 start_P30_3
+ start_P31_9
+End

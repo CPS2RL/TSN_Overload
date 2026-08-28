@@ -1,0 +1,2 @@
+Optimizer,Statistics for model 'QueueMapper',Problem type,Rows,Columns,Nonzeros,Continuous_Variables,Integer_Variables,Binary_Variables,Matrix range_Min,Matrix range_Max,Objective range_Min,Objective range_Max,Bounds range_Min,Bounds range_Max,RHS range_Min,RHS range_Max,Input_File,Solving_Time_Seconds,Solving_Time_Minutes
+Mapping,,MIP,7164,756,26136,252,504,252,1e+00,1e+06,1e+00,1e+06,1e+00,1e+06,2e+00,2e+06,flows_48_u_0.8_p252_run_58.csv,0.7405,0.0123

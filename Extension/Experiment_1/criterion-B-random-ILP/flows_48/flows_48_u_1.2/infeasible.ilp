@@ -1,0 +1,42 @@
+\ Model NetworkScheduler_copy
+\ LP format - for model browsing. Use MPS format to capture full model detail.
+Maximize
+ 
+Subject To
+ deadline_P35_2: start_P35_2 <= 97384
+ fifo_8454: - start_P10_2 + start_P36_1 <= -1533
+ tie_break_tt_112: - start_P4_1 + start_P38_1 <= -5837
+ tie_break_tt_116: start_P4_1 - start_P48_1 <= -5093
+ tie_break_tt_262: start_P10_1 - start_P29_1 <= -5522
+ tie_break_tt_761: start_P16_1 - start_P43_1 <= -6446
+ tie_break_tt_1006: start_P3_1 - start_P23_1 <= -9523
+ tie_break_tt_1067: start_P25_1 - start_P39_1 <= -6683
+ tie_break_tt_1147: - start_P16_1 + start_P26_1 <= -6903
+ tie_break_tt_1150: - start_P26_1 + start_P29_1 <= -10341
+ tie_break_tt_1775: start_P10_2 - start_P35_2 <= -5522
+ tie_break_tt_1820: start_P23_1 - start_P36_1 <= -6963
+ tie_break_tt_1935: - start_P38_1 + start_P39_1 <= -6345
+ tie_break_tt_2240: - start_P25_1 + start_P43_1 <= -8107
+ tie_break_tt_2458: - start_P3_1 + start_P47_1 <= -11003
+ tie_break_tt_2522: - start_P47_1 + start_P48_1 <= -2641
+Bounds
+ start_P3_1 free
+ start_P4_1 free
+ start_P10_2 free
+ start_P16_1 free
+ start_P23_1 free
+ start_P25_1 free
+ start_P26_1 free
+ start_P29_1 free
+ start_P35_2 free
+ start_P36_1 free
+ start_P38_1 free
+ start_P39_1 free
+ start_P43_1 free
+ start_P47_1 free
+ start_P48_1 free
+Generals
+ start_P3_1 start_P4_1 start_P10_1 start_P10_2 start_P16_1 start_P23_1
+ start_P25_1 start_P26_1 start_P29_1 start_P35_2 start_P36_1 start_P38_1
+ start_P39_1 start_P43_1 start_P47_1 start_P48_1
+End
